@@ -63,6 +63,7 @@ catkin_make -DCMAKE_BUILD_TYPE=RelWithDebugInfo
   roslaunch multi_robot_mir_control run.launch
 
 ```
+![Map Example](images/gazebo.png)
 ### có thẻ thực hiện chỉnh sửa Map bằng graph_editor.py hoặc truy cập dashboard để chỉnh sửa
 
 ## 🛠 chạy khởi đầu với dashboard
@@ -73,7 +74,8 @@ catkin_make -DCMAKE_BUILD_TYPE=RelWithDebugInfo
   python3 src/multi_mir_robot/multi_robot_mir_control/multi_robot_dashboard/app.py
 # → Truy cập trình duyệt tại địa chỉ hiển thị (mặc định là http://localhost:8050) và thực hiện kết nối điều khiển 
 ```
-  
+![page control](images/page_control.png)
+![page map editor](images/map_editor.png)
 
 
 
