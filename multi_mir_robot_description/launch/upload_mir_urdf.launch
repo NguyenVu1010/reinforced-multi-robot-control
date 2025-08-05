@@ -1,0 +1,9 @@
+<launch>
+  <arg name="prefix" default="robot1_" />
+  <arg name="mir_type" default="mir_100" />
+  <arg name="namespace" default="robot1" />
+
+  <!-- Gán trực tiếp param vào đúng namespace -->
+  <param name="/$(arg namespace)/robot_description"
+         command="$(find xacro)/xacro '$(find multi_mir_robot_description)/urdf/mir.urdf.xacro' prefix:=$(arg prefix) mir_type:=$(arg mir_type) robot_namespace:=$(arg namespace)" />
+</launch>

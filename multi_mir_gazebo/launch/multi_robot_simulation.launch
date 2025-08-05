@@ -1,0 +1,155 @@
+<launch>
+
+  <arg name="mir_type" default="mir_100" />
+  <arg name="prefix1" default="robot1_" />
+  <arg name="prefix2" default="robot2_" />
+  <arg name="prefix3" default="robot3_" />
+  <!-- Load world trước -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find multi_mir_gazebo)/worlds/empty.world"/> -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="false"/>
+    <arg name="headless" value="true"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Robot 1 -->
+  <group ns="robot1">
+    <rosparam command="load" file="$(find multi_mir_robot_description)/config/diffdrive_controller_1.yaml" />
+    <include file="$(find multi_mir_robot_description)/launch/upload_mir_urdf.launch">
+      <arg name="mir_type" value="$(arg mir_type)" />
+      <arg name="prefix" value="$(arg prefix1)" />
+      <arg name="namespace" value="robot1" />
+    </include>
+    <node name="spawner1" pkg="controller_manager" type="spawner" output="screen"
+          args="mobile_base_controller"/>
+    <!-- EKF -->
+    <include file="$(find multi_mir_gazebo)/launch/includes/ekf.launch.xml">
+        <arg name="prefix" value="$(arg prefix1)" />
+    </include>
+
+    <!-- Add passive + mimic joints to joint_states topic -->
+    <node name="joint_state_publisher_robot1" pkg="joint_state_publisher" type="joint_state_publisher">
+      <rosparam param="source_list">
+        - joint_states
+      </rosparam>
+      <param name="rate" value="200.0" />
+    </node>
+
+    <!-- Robot state publisher -->
+    <node name="robot_state_publisher_robot1" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
+    <node name="spawn_robot1" pkg="gazebo_ros" type="spawn_model"
+        args="-param /robot1/robot_description -urdf -model robot1 -x 21.5 -y 15 -Y -1.57"
+        output="screen"/>
+    <!-- <node pkg="amcl" type="amcl" name="amcl">
+      <param name="use_map_topic" value="true"/>
+      <param name="odom_frame_id" value="robot1_odom"/>
+      <param name="base_frame_id" value="robot1_base_link"/>
+      <param name="global_frame_id" value="map"/>
+      <remap from="scan" to="scan"/>
+      <remap from="map" to="/map"/> 
+      <param name="initial_pose_x"            value="21"/>
+      <param name="initial_pose_y"            value="17"/>
+      <param name="initial_pose_a"            value="-1.57"/>
+    </node> -->
+    
+    <node pkg="multi_mir_gazebo" type="namespaced_lidar_merger.py" name="lidar_merger1" output="screen"/>
+
+  </group>
+  
+  <!-- Robot 2 -->
+  
+  <group ns="robot2">
+    <rosparam command="load" file="$(find multi_mir_robot_description)/config/diffdrive_controller_2.yaml" />
+    <include file="$(find multi_mir_robot_description)/launch/upload_mir_urdf.launch">
+      <arg name="mir_type" value="$(arg mir_type)" />
+      <arg name="prefix" value="$(arg prefix2)" />
+      <arg name="namespace" value="robot2" />
+    </include>
+    <node name="spawner2" pkg="controller_manager" type="spawner" output="screen"
+          args="mobile_base_controller"/>
+    <!-- EKF -->
+    <include file="$(find multi_mir_gazebo)/launch/includes/ekf.launch.xml">
+        <arg name="prefix" value="$(arg prefix2)" />
+    </include>
+
+    <!-- Add passive + mimic joints to joint_states topic -->
+    <node name="joint_state_publisher_robot2" pkg="joint_state_publisher" type="joint_state_publisher" output="screen">
+      <rosparam param="source_list">
+        - joint_states
+      </rosparam>
+      <param name="rate" value="200.0" />
+    </node>
+
+    <!-- Robot state publisher -->
+    <node name="robot_state_publisher_robot2" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
+    <node name="spawn_robot2" pkg="gazebo_ros" type="spawn_model"
+        args="-param /robot2/robot_description -urdf -model robot2 -x 23.4 -y 15 -Y -1.57"
+        output="screen"/>
+    <!-- <node pkg="amcl" type="amcl" name="amcl">
+      <param name="use_map_topic" value="true"/>
+      <param name="odom_frame_id" value="robot2_odom"/>
+      <param name="base_frame_id" value="robot2_base_link"/>
+      <param name="global_frame_id" value="map"/>
+      <remap from="scan" to="scan"/>
+      <remap from="map" to="/map"/> 
+      <param name="initial_pose_x"            value="24"/>
+      <param name="initial_pose_y"            value="17"/>
+      <param name="initial_pose_a"            value="-1.57"/>
+    </node> -->
+    
+    <node pkg="multi_mir_gazebo" type="namespaced_lidar_merger.py" name="lidar_merger2" output="screen"/>
+
+  </group>
+
+  <!-- Robot 3 -->
+  <group ns="robot3">
+    <rosparam command="load" file="$(find multi_mir_robot_description)/config/diffdrive_controller_3.yaml" />
+    <include file="$(find multi_mir_robot_description)/launch/upload_mir_urdf.launch">
+      <arg name="mir_type" value="$(arg mir_type)" />
+      <arg name="prefix" value="$(arg prefix3)" />
+      <arg name="namespace" value="robot3" />
+    </include>
+    <node name="spawner3" pkg="controller_manager" type="spawner" output="screen"
+          args="mobile_base_controller"/>
+    <!-- EKF -->
+    <include file="$(find multi_mir_gazebo)/launch/includes/ekf.launch.xml">
+        <arg name="prefix" value="$(arg prefix3)" />
+    </include>
+
+    <!-- Add passive + mimic joints to joint_states topic -->
+    <node name="joint_state_publisher_robot3" pkg="joint_state_publisher" type="joint_state_publisher" output="screen">
+      <rosparam param="source_list">
+        - joint_states
+      </rosparam>
+      <param name="rate" value="200.0" />
+    </node>
+
+    <!-- Robot state publisher -->
+    <node name="robot_state_publisher_robot3" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
+    <node name="spawn_robot3" pkg="gazebo_ros" type="spawn_model"
+        args="-param /robot3/robot_description -urdf -model robot3 -x 25.2 -y 15 -Y -1.57"
+        output="screen"/>
+    <!-- <node pkg="amcl" type="amcl" name="amcl">
+      <param name="use_map_topic" value="true"/>
+      <param name="odom_frame_id" value="robot3_odom"/>
+      <param name="base_frame_id" value="robot3_base_link"/>
+      <param name="global_frame_id" value="map"/>
+      <remap from="scan" to="scan"/>
+      <remap from="map" to="/map"/> 
+      <param name="initial_pose_x"            value="27"/>
+      <param name="initial_pose_y"            value="17"/>
+      <param name="initial_pose_a"            value="-1.57"/>
+    </node> -->
+    
+    <node pkg="multi_mir_gazebo" type="namespaced_lidar_merger.py" name="lidar_merger3" output="screen"/>
+    
+  </group>
+  <!-- <include file="$(find mir_navigation)/launch/amcl_multi_robot.launch" /> -->
+  <include file="$(find multi_mir_gazebo)/launch/spawn_map_mir.launch.xml" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(find multi_mir_gazebo)/maps/map_mir_1_595x386.yaml" output="screen">
+    <param name="frame_id" value="map"/>
+    <param name="use_sim_time" value="true"/>
+  </node>
+</launch>

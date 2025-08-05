@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+
+    <!-- Mô phỏng nhanh gấp 4 lần thời gian thực -->
+    <physics name="fast_physics" type="ode">
+      <real_time_update_rate>400</real_time_update_rate>       <!-- 400 bước/giây -->
+      <max_step_size>0.01</max_step_size>                      <!-- mỗi bước dài 10ms -->
+      <real_time_factor>4.0</real_time_factor>                 <!-- tốc độ 4x -->
+    </physics>
+
+    <!-- Thêm mặt phẳng để robot đứng -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Tắt mặt trời nếu không cần ánh sáng -->
+    <!--
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    -->
+  <plugin name="gazebo_ros_api_plugin" filename="libgazebo_ros_api_plugin.so"/>
+
+  </world>
+</sdf>
+

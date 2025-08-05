@@ -1,0 +1,22 @@
+<launch>
+  <group ns="robot1">
+    <rosparam file="$(find multi_mir_robot_description)/config/diffdrive_controller1.yaml" command="load" />
+    <node pkg="controller_manager" type="spawner"
+          name="spawner1"
+          args="joint_state_controller mobile_base_controller"/>
+  </group>
+
+  <group ns="robot2">
+    <rosparam file="$(find multi_mir_robot_description)/config/diffdrive_controller2.yaml" command="load" />
+    <node pkg="controller_manager" type="spawner"
+          name="spawner2"
+          args="joint_state_controller mobile_base_controller"/>
+  </group>
+
+  <group ns="robot3">
+    <rosparam file="$(find multi_mir_robot_description)/config/diffdrive_controller3.yaml" command="load" />
+    <node pkg="controller_manager" type="spawner"
+          name="spawner3"
+          args="joint_state_controller mobile_base_controller"/>
+  </group>
+</launch>

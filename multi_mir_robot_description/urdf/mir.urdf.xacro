@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="mir">
+
+  <!-- MiR base -->
+  <xacro:include filename="$(find mir_description)/urdf/include/mir_v1.urdf.xacro" />
+  <xacro:include filename="$(find mir_description)/urdf/include/common.gazebo.xacro" />
+
+  <!-- Nhận prefix từ bên ngoài -->
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="robot_namespace" default=""/>
+
+  <!-- Gọi macro mir -->
+  <xacro:mir prefix="$(arg prefix)" />
+
+  <!-- Plugin điều khiển -->
+  <xacro:controller_plugin_gazebo robot_namespace="/$(arg robot_namespace)" />
+</robot>

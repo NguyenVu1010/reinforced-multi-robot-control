@@ -1,0 +1,11 @@
+<launch>
+  <arg name="prefix" default="" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_filter" output="screen" >
+    <rosparam command="load" file="$(find mir_gazebo)/config/ekf.yaml"/>
+    <param name="use_sim_time" value="true"/>
+    <remap from="odometry/filtered" to="odom"/>
+    <remap from="imu/data" to="imu/data"/>
+    <remap from="odom" to="odom"/>
+  </node>
+</launch>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="mir_100">
+
+  <xacro:arg name="prefix" default=""/>
+  <xacro:arg name="mir_type" default="mir_100"/>
+
+  <xacro:include filename="$(find mir_description)/urdf/include/mir_v1.urdf.xacro" />
+
+  <xacro:mir prefix="${prefix}" />
+
+</robot>
