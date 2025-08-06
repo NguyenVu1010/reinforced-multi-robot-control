@@ -1,0 +1,19 @@
+/* assets/custom_styles.css */
+
+/* --- Định dạng cho Sidebar --- */
+.sidebar {
+    position: fixed; /* Cố định sidebar */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 18rem; /* Độ rộng của sidebar */
+    padding: 2rem 1rem;
+    background-color: #f8f9fa; /* Màu nền xám nhạt */
+    border-right: 1px solid #dee2e6;
+}
+
+/* --- Định dạng cho khu vực nội dung chính --- */
+.content {
+    margin-left: 18rem; /* Đẩy nội dung sang phải bằng đúng độ rộng của sidebar */
+    padding: 2rem 1rem;
+}

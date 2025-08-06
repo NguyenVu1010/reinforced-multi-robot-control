@@ -1,0 +1,177 @@
+[
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_622406",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-04T19:05:25.329402Z",
+    "retries": 0
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_d1da81",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-04T19:05:37.328794Z",
+    "retries": 0
+  },
+  {
+    "type": "GOTO",
+    "name": "Go to Charging Station",
+    "target_location": {
+      "x": 25.0,
+      "y": 15.0
+    },
+    "id": "task_bb8887",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-04T19:09:03.286408Z",
+    "retries": 1
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_88d6cf",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-04T19:17:34.067567Z"
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_8f304f",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-05T06:19:06.222852Z",
+    "retries": 2
+  },
+  {
+    "type": "GOTO",
+    "name": "Go to Charging Station",
+    "target_location": {
+      "x": 25.0,
+      "y": 15.0
+    },
+    "id": "task_0f5f91",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-05T07:10:30.457391Z"
+  },
+  {
+    "type": "GOTO",
+    "name": "Go to Charging Station",
+    "target_location": {
+      "x": 25.0,
+      "y": 15.0
+    },
+    "id": "task_446348",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-05T07:10:39.635425Z"
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_9db3b0",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-05T07:14:53.144649Z"
+  },
+  {
+    "type": "GOTO",
+    "name": "Go to Charging Station",
+    "target_location": {
+      "x": 25.0,
+      "y": 15.0
+    },
+    "id": "task_2e49ea",
+    "status": "COMPLETED",
+    "assigned_to": null,
+    "current_stage": "idle",
+    "last_updated": "2025-08-05T08:36:34.931848Z"
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_d8ac34",
+    "status": "PENDING",
+    "assigned_to": null,
+    "current_stage": null,
+    "last_updated": "2025-08-05T16:20:15.992494Z"
+  },
+  {
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    },
+    "id": "task_b32587",
+    "status": "PENDING",
+    "assigned_to": null,
+    "current_stage": null,
+    "last_updated": "2025-08-05T16:20:17.609699Z"
+  }
+]

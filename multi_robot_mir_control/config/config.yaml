@@ -1,0 +1,90 @@
+# ===================================================================
+# Cấu hình cho việc huấn luyện đa robot MiR bằng PPO
+# Tương thích với cấu trúc trainer đã được module hóa.
+# ===================================================================
+
+# Tên package ROS chứa code. Dùng để ConfigManager xác định đường dẫn.
+package_name: "mir_control" # <-- THAY TÊN PACKAGE CỦA BẠN NẾU CẦN
+
+# --- 1. Cấu hình Môi trường (Environment) ---
+# Được sử dụng bởi MiRPathFollowingEnv và các lớp helper của nó.
+env:
+  # Số lượng robot tham gia huấn luyện
+  num_robots: 3
+
+  # Kích thước của vector trạng thái (observation) - 27 chiều
+  state_dim: 27
+  
+  # Kích thước của vector hành động (action) - [v, w]
+  action_dim: 2
+
+  # Số bước tối đa cho một episode của mỗi robot trước khi bị buộc reset.
+  max_steps_per_episode: 2000
+
+
+# --- 2. Cấu hình Huấn luyện (Training) ---
+# Được sử dụng bởi PPOTrainer và vòng lặp chính trong TrainingOrchestrator.
+train:
+  # Tổng số chu kỳ thu thập dữ liệu và cập nhật mạng.
+  epochs: 20000
+
+  # Tốc độ học cho mạng Actor (Policy Network)
+  lr_actor: 0.00005
+
+  # Tốc độ học cho mạng Critic (Value Network)
+  lr_critic: 0.0001
+  
+  # Hệ số chiết khấu cho phần thưởng tương lai
+  gamma: 0.99
+
+  # Tham số Lambda cho General Advantage Estimation (GAE)
+  gae_lambda: 0.95
+
+  # Ngưỡng cắt của PPO để giới hạn sự thay đổi của policy
+  clip_epsilon: 0.2
+
+  # Số lần lặp lại cập nhật trên cùng một batch dữ liệu
+  k_epochs: 10
+
+  # Hệ số cho thành phần entropy trong hàm loss (khuyến khích khám phá)
+  entropy_coef: 0.01
+
+  # Tần suất in log ra màn hình (sau mỗi bao nhiêu chu kỳ)
+  # Được sử dụng trong TrainingOrchestrator._log_and_save()
+  log_interval: 10
+  
+
+# --- 3. Cấu hình Model ---
+# Được sử dụng bởi ModelManager khi khởi tạo các mạng neural.
+model:
+  # Số lượng neuron trong các lớp ẩn của cả Policy Network và Value Network
+  hidden_dim: 256
+
+map_config:
+  map_width: 1190
+  map_height: 772
+  resolution: 0.05
+
+# --- 4. Cấu hình Checkpoint (Lưu và Tải model) ---
+# Được sử dụng bởi ModelManager và ConfigManager.
+checkpoint:
+  # Đặt là true nếu bạn muốn tải một model đã lưu để tiếp tục training.
+  # Nếu là false, sẽ training từ đầu.
+  load_from_checkpoint: true
+  
+  # Tần suất lưu model (sau mỗi bao nhiêu chu kỳ)
+  # Được sử dụng trong TrainingOrchestrator._log_and_save()
+  save_interval: 100
+
+  # --- Các đường dẫn để tải model (CHỈ SỬ DỤNG KHI load_from_checkpoint LÀ true) ---
+  # Bạn cần cung cấp đường dẫn TUYỆT ĐỐI tới các file đã lưu.
+  # Để trống nếu không muốn tải.
+  
+  # Ví dụ:
+  # policy_checkpoint_path: "/home/nguyen1/catkin_ws/src/mir_robot/mir_control/saved_models/policy_net_cycle_1000.pth"
+  # value_checkpoint_path: "/home/nguyen1/catkin_ws/src/mir_robot/mir_control/saved_models/value_net_cycle_1000.pth"
+  # normalizer_checkpoint_path: "/home/nguyen1/catkin_ws/src/mir_robot/mir_control/saved_models/obs_normalizer_cycle_1000.pkl"
+  policy_checkpoint_path: "/home/nguyen1/catkin_ws/src/mir_robot/mir_control/saved_models/policy_net_final_1851.pth"
+  value_checkpoint_path: "/home/nguyen1/catkin_wssrc/mir_robot/mir_control/saved_models/value_net_final_1851.pth"
+  normalizer_checkpoint_path: "/home/nguyen1/catkin_ws/src/mir_robot/mir_control/saved_models/obs_normalizer_final.pkl"
+  log_filename: training_log.csv

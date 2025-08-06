@@ -1,0 +1,51 @@
+<launch>
+    <!-- ================== THÔNG TIN CHUNG ================== -->
+    <arg name="package_name" default="multi_robot_mir_control" />
+    <arg name="run_plotter" default="true" /> 
+
+    <!-- ================== TÊN FILE MÔ HÌNH ================== -->
+    <arg name="model_file" default="policy_net_final_1840.pth" />
+    <arg name="config_file" default="config.yaml" />
+    <arg name="normalizer_file" default="obs_normalizer_final.pkl" />
+    <arg name="saved_models_dir" default="$(find multi_robot_mir_control)/saved_models" />
+
+    <!-- ================== NODE CUNG CẤP ĐƯỜNG ĐI ================== -->
+    <arg name="map_frame" default="map" />
+
+    <node name="path_provider_server_node"
+          pkg="$(arg package_name)"
+          type="path_provider_node.py"
+          output="screen">
+        <!-- Có thể thêm các param nếu cần -->
+        <param name="map_frame" value="$(arg map_frame)" />
+        <param name="path_library_path" value="$(find multi_robot_mir_control)/data/path_library.json" />
+    </node>
+
+    <!-- ================== NODE ĐIỀU KHIỂN ROBOT (DÙNG MÔ HÌNH RL) ================== -->
+    <node name="multi_robot_runner_node"
+          pkg="$(arg package_name)"
+          type="run_robot.py"
+          output="screen"
+          launch-prefix="bash -c 'sleep 3; $0 $@'">
+        <param name="model_dir" value="$(arg saved_models_dir)" />
+        <param name="model_file" value="$(arg model_file)" />
+        <param name="config_file_name" value="$(arg config_file)" />
+        <param name="normalizer_file" value="$(arg normalizer_file)" />
+    </node>
+
+    <!-- ================== NODE GÁN NHIỆM VỤ (TASK MANAGER) ================== -->
+    <node name="task_manager_node"
+          pkg="$(arg package_name)"
+          type="task_manager.py"
+          output="screen"
+          launch-prefix="bash -c 'sleep 3; $0 $@'">
+    </node>
+
+    <!-- ================== NODE VẼ GIÁM SÁT ================== -->
+    <node name="multi_robot_plotter_node"
+          pkg="$(arg package_name)"
+          type="plotter.py"
+          output="screen"
+          if="$(arg run_plotter)">
+    </node>
+</launch>

@@ -1,0 +1,24 @@
+[
+  {
+    "template_id": "template_goto_charge",
+    "type": "GOTO",
+    "name": "Go to Charging Station",
+    "target_location": {
+      "x": 25.0,
+      "y": 15.0
+    }
+  },
+  {
+    "template_id": "template_delivery_A_to_B",
+    "type": "DELIVERY",
+    "name": "Deliver from A to B",
+    "pickup_location": {
+      "x": -17.7,
+      "y": 14.7
+    },
+    "dropoff_location": {
+      "x": 10.15,
+      "y": -16.25
+    }
+  }
+]

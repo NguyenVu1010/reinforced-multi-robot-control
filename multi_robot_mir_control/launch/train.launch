@@ -1,0 +1,22 @@
+<launch>
+  <!-- ================== THÔNG TIN CHUNG ================== -->
+    <arg name="package_name" default="multi_robot_mir_control" />
+
+    <!-- ================== NODE CUNG CẤP ĐƯỜNG ĐI ================== -->
+    <arg name="map_frame" default="map" />
+
+    <node name="path_provider_server_node"
+          pkg="$(arg package_name)"
+          type="path_provider_node.py"
+          output="screen">
+        <!-- Có thể thêm các param nếu cần -->
+        <param name="map_frame" value="$(arg map_frame)" />
+        <param name="path_library_path" value="$(find multi_robot_mir_control)/data/path_library.json" />
+    </node>
+
+  <!-- Node 2: train script -->
+  <node name="trainer_node" pkg="multi_robot_mir_control" type="run_training.py"
+        output="screen" cwd="node">
+    <param name="use_sim_time" value="true" />
+  </node>
+</launch>

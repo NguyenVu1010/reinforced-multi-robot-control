@@ -1,0 +1,14 @@
+# --- Request (Yêu cầu từ Client -> Server) ---
+# Client chỉ cần gửi tên của robot cần có path mới.
+# Server sẽ tự tìm vị trí của robot đó để tạo path.
+string robot_name
+
+---
+
+# --- Response (Phản hồi từ Server -> Client) ---
+# Server sẽ trả về toàn bộ quỹ đạo đã được tạo.
+nav_msgs/Path path
+
+# Kèm theo trạng thái thành công và một tin nhắn thông báo.
+bool success
+string message

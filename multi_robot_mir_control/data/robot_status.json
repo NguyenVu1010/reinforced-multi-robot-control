@@ -1,0 +1,17 @@
+{
+  "robot1": {
+    "status": "idle",
+    "task_id": null,
+    "last_updated": "2025-08-05T08:37:29.934424Z"
+  },
+  "robot2": {
+    "status": "idle",
+    "task_id": null,
+    "last_updated": "2025-08-05T08:37:29.934435Z"
+  },
+  "robot3": {
+    "status": "idle",
+    "task_id": null,
+    "last_updated": "2025-08-05T08:37:29.934440Z"
+  }
+}
