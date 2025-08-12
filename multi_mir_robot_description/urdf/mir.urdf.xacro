@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="mir">
 
   <!-- MiR base -->
-  <xacro:include filename="$(find mir_description)/urdf/include/mir_v1.urdf.xacro" />
-  <xacro:include filename="$(find mir_description)/urdf/include/common.gazebo.xacro" />
+  <xacro:include filename="$(find multi_mir_robot_description)/urdf/include/mir_v1.urdf.xacro" />
+  <xacro:include filename="$(find multi_mir_robot_description)/urdf/include/common.gazebo.xacro" />
 
   <!-- Nhận prefix từ bên ngoài -->
   <xacro:arg name="prefix" default=""/>

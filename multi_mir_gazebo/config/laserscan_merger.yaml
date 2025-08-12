@@ -1,0 +1,33 @@
+# ===============================================================
+# | Cấu hình cho việc trộn (merge) nhiều luồng LaserScan        |
+# | Sử dụng bởi node 'laserscan_multi_merger' của ira_laser_tools|
+# ===============================================================
+
+# Danh sách các topic laser scan đầu vào, cách nhau bởi dấu cách.
+# QUAN TRỌNG: Đây là các tên topic TƯƠNG ĐỐI. Khi node này chạy
+# trong namespace "robot1", nó sẽ tự động tìm "/robot1/f_scan" 
+# và "/robot1/b_scan".
+laserscan_topics: "f_scan b_scan"
+
+# Tên của topic đầu ra chứa dữ liệu LaserScan đã được trộn.
+# Đây là topic mà AMCL sẽ lắng nghe.
+# Nó cũng sẽ nằm trong namespace, ví dụ: "/robot1/scan".
+scan_destination_topic: "scan"
+
+# Frame đích của dữ liệu laser scan sau khi đã trộn.
+# "base_link" là lựa chọn tốt nhất, vì nó là frame gốc của thân robot.
+# ROS TF sẽ tự động hiểu đây là "robot1/base_link", "robot2/base_link",...
+# dựa trên cây TF hiện có.
+destination_frame: "base_link"
+
+# (Tùy chọn) Nếu bạn muốn xuất ra cả dữ liệu PointCloud2 để dễ trực quan hóa trong RViz.
+cloud_destination_topic: "merged_cloud"
+
+# Các tham số sau đây định nghĩa các thuộc tính của luồng laser scan ĐẦU RA.
+# Bạn có thể để mặc định.
+angle_min: -3.14159     # Góc bắt đầu (radian) - Tương đương -180 độ
+angle_max: 3.14159     # Góc kết thúc (radian) - Tương đương +180 độ
+angle_increment: 0.0087 # Độ phân giải góc (radian), tương đương 0.5 độ
+scan_time: 0.0333      # Thời gian cho một vòng quét
+range_min: 0.05        # Khoảng cách tối thiểu
+range_max: 25.0        # Khoảng cách tối đa

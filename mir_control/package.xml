@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mir_control</name>
+  <version>0.1.0</version>
+  <description>The mir_control package for multi-robot path following with RL.</description>
+
+  <!-- Thay thế bằng thông tin của bạn -->
+  <maintainer email="your_email@example.com">Vu Duc Nguyen</maintainer>
+  <author email="your_email@example.com">Vu Duc Nguyen</author>
+  <license>TODO</license>
+
+  <!-- Công cụ build mặc định -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- =================================================================== -->
+  <!--  CÁC DEPENDENCY CẦN THIẾT KHI BUILD (Compile Time)  -->
+  <!-- =================================================================== -->
+  
+  <!-- Các gói Python cơ bản -->
+  <build_depend>rospy</build_depend>
+  
+  <!-- Các gói C++ cơ bản -->
+  <build_depend>roscpp</build_depend>
+
+  <!-- Các gói message chung cho cả Python và C++ -->
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>gazebo_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+
+  <!-- Công cụ để tạo message/service tùy chỉnh -->
+  <build_depend>message_generation</build_depend>
+
+  <!-- Các thư viện C++ cho phép biến đổi (transformations) -->
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
+
+  <!-- Thư viện C++ cho đại số tuyến tính -->
+  <build_depend>libeigen3-dev</build_depend>
+
+  <!-- =================================================================== -->
+  <!--  CÁC DEPENDENCY CẦN THIẾT KHI CÁC PACKAGE KHÁC DÙNG GÓI NÀY  -->
+  <!-- =================================================================== -->
+  
+  <!-- Gần như luôn lặp lại các build_depend quan trọng -->
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>nav_msgs</build_export_depend>
+  <build_export_depend>gazebo_msgs</build_export_depend>
+  <build_export_depend>visualization_msgs</build_export_depend>
+  <build_export_depend>message_runtime</build_export_depend>
+  <build_export_depend>tf2</build_export_depend>
+  <build_export_depend>tf2_ros</build_export_depend>
+  <build_export_depend>tf2_geometry_msgs</build_export_depend>
+  <build_export_depend>libeigen3-dev</build_export_depend>
+
+
+  <!-- =================================================================== -->
+  <!--  CÁC DEPENDENCY CẦN THIẾT KHI CHẠY (Runtime)  -->
+  <!-- =================================================================== -->
+
+  <!-- Gần như luôn lặp lại các build_depend quan trọng -->
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>gazebo_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>tf2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+  <exec_depend>libeigen3-dev</exec_depend>
+
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

@@ -4,7 +4,7 @@
   <xacro:arg name="prefix" default=""/>
   <xacro:arg name="mir_type" default="mir_100"/>
 
-  <xacro:include filename="$(find mir_description)/urdf/include/mir_v1.urdf.xacro" />
+  <xacro:include filename="$(find multi_mir_robot_description)/urdf/include/mir_v1.urdf.xacro" />
 
   <xacro:mir prefix="${prefix}" />
 
