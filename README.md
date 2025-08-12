@@ -46,7 +46,7 @@ catkin_make -DCMAKE_BUILD_TYPE=RelWithDebugInfo
   
   # Terminal 2: Chạy mô hình đã train
   source ~/catkin_ws/devel/setup.bash
-  roslaunch multi_robot_mir_control run.launch
+  roslaunch mir_control run.launch
 
 ```
 ## ▶️ Chạy robot đã huấn luyện (Run)
@@ -60,7 +60,7 @@ catkin_make -DCMAKE_BUILD_TYPE=RelWithDebugInfo
   
   # Terminal 2: Chạy mô hình đã train
   source ~/catkin_ws/devel/setup.bash
-  roslaunch multi_robot_mir_control run.launch
+  roslaunch mir_control run.launch
 
 ```
 ![Map Example](image/gazebo.png)
@@ -71,7 +71,7 @@ catkin_make -DCMAKE_BUILD_TYPE=RelWithDebugInfo
   cd ~/catkin_ws
   catkin_make
   source ~/catkin_ws/devel/setup.bash
-  python3 src/multi_mir_robot/multi_robot_mir_control/multi_robot_dashboard/app.py
+  python3 src/multi_mir_robot/mir_control/multi_robot_dashboard/app.py
 # → Truy cập trình duyệt tại địa chỉ hiển thị (mặc định là http://localhost:8050) và thực hiện kết nối điều khiển 
 ```
 ![page control](image/page_control.png)
